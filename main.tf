@@ -15,7 +15,7 @@ resource "cloudflare_record" "domain_verification" {
   zone_id = var.zone_id
   name    = "_amazonses.${aws_ses_domain_identity.this.id}"
   type    = "TXT"
-  content = aws_ses_domain_identity.this.verification_token
+  content = "\"${aws_ses_domain_identity.this.verification_token}\""
 }
 
 resource "cloudflare_record" "dkim" {
